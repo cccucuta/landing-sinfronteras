@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#b93348">
+<link href="/images/favicon.png" rel="shortcut icon">
+<title>Ponentes | Congreso Empresarial Sin Fronteras 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rojo: #b93348;
+    --rojo-oscuro: #94293a;
+    --negro: #222226;
+    --gris: #f3f3f4;
+    --blanco: #ffffff;
+    --texto: #2b2b30;
+    --suave: #5d5d66;
+    --titulo: "Montserrat", "Segoe UI", Arial, sans-serif;
+    --cuerpo: "Open Sans", "Segoe UI", Arial, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--cuerpo); color: var(--texto); background: var(--blanco); line-height: 1.65; font-size: 1.0625rem; }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--negro); outline-offset: 3px; }
+  .contenedor { width: min(1140px, 92%); margin-inline: auto; }
+
+  /* Barra superior */
+  .superior { background: var(--negro); color: var(--blanco); font-size: .875rem; }
+  .superior .contenedor { display: flex; justify-content: space-between; flex-wrap: wrap; gap: .25rem 1.5rem; padding: .5rem 0; }
+  .superior a { text-decoration: none; }
+  .superior a:hover { text-decoration: underline; }
+
+  /* Header */
+  header { background: var(--blanco); border-bottom: 1px solid #e3e3e6; }
+  .barra { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; padding: 1rem 0; }
+  .marca { display: flex; align-items: center; gap: 1rem; text-decoration: none; }
+  .marca img { height: 46px; width: auto; }
+  .marca span { font-family: var(--titulo); font-weight: 800; font-size: 1rem; line-height: 1.2; color: var(--negro); max-width: 16ch; padding-left: 1rem; border-left: 3px solid var(--rojo); }
+  nav { display: flex; align-items: center; gap: 1.75rem; }
+  nav a { font-family: var(--titulo); font-weight: 700; font-size: .95rem; text-decoration: none; color: var(--negro); }
+  nav a:hover { color: var(--rojo); }
+
+  .boton { display: inline-block; padding: .85rem 1.75rem; background: var(--rojo); color: var(--blanco); font-family: var(--titulo); font-weight: 700; text-decoration: none; border-radius: 6px; transition: background .2s; }
+  .boton:hover { background: var(--rojo-oscuro); }
+  nav a.boton { color: var(--blanco); padding: .6rem 1.25rem; font-size: .95rem; }
+  nav a.boton:hover { color: var(--blanco); }
+  .boton.claro { background: var(--blanco); color: var(--rojo); }
+  .boton.claro:hover { background: var(--gris); }
+
+  /* Hero */
+  .hero { background: var(--rojo); color: var(--blanco); padding: 4.5rem 0 5rem; }
+  .hero .pre { font-family: var(--titulo); font-weight: 700; font-size: 1rem; letter-spacing: .04em; opacity: .9; }
+  .hero h1 { font-family: var(--titulo); font-weight: 800; text-transform: uppercase; font-size: clamp(2.2rem, 6.5vw, 4.5rem); line-height: 1.05; letter-spacing: -0.01em; max-width: 16ch; margin-top: .75rem; }
+  .hero p.texto { margin-top: 1.5rem; max-width: 48ch; font-size: 1.15rem; }
+  .hero .acciones { margin-top: 2rem; display: flex; flex-wrap: wrap; align-items: center; gap: 1.5rem; }
+  .hero .enlace { font-family: var(--titulo); font-weight: 700; text-underline-offset: 6px; }
+  .hero :focus-visible { outline-color: var(--blanco); }
+
+  /* Explicación */
+  .explicacion { padding: 4.5rem 0 3rem; }
+  .explicacion .contenedor { display: grid; grid-template-columns: 1fr 1.4fr; gap: 3rem; align-items: start; }
+  .explicacion h2 { font-family: var(--titulo); font-weight: 800; font-size: clamp(1.7rem, 4vw, 2.3rem); line-height: 1.15; color: var(--negro); padding-left: 1.25rem; border-left: 6px solid var(--rojo); }
+  .explicacion p { color: var(--suave); }
+  .explicacion p + p { margin-top: 1rem; }
+
+  /* Ponentes */
+  .ponentes { background: var(--gris); padding: 4rem 0 5rem; }
+  .ponentes h2 { font-family: var(--titulo); font-weight: 800; font-size: clamp(1.5rem, 3.5vw, 2rem); color: var(--negro); margin-bottom: 2rem; padding-left: 1.25rem; border-left: 6px solid var(--rojo); }
+  .rejilla { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.75rem; }
+  .ponente { background: var(--blanco); border-radius: 10px; overflow: hidden; box-shadow: 0 2px 10px rgba(34,34,38,.08); border-bottom: 4px solid var(--rojo); display: flex; flex-direction: column; }
+  .foto { position: relative; overflow: hidden; aspect-ratio: 4 / 5; background: linear-gradient(180deg, #f6f6f7 0%, #dcdce1 100%); display: grid; place-items: center; font-family: var(--titulo); font-weight: 800; font-size: 3.5rem; color: rgba(34,34,38,.28); }
+  .foto::before { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 38%; background: var(--rojo); }
+  .foto .ini { position: relative; z-index: 1; }
+  .foto img { position: absolute; z-index: 1; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: bottom; }
+  .foto.doble img { inset: auto; bottom: 0; width: 66%; height: auto; }
+  .foto.doble img:first-of-type { left: 0; }
+  .foto.doble img:last-of-type { right: 0; }
+  .datos { padding: 1.25rem 1.5rem 1.5rem; }
+  .ponente h3 { font-family: var(--titulo); font-weight: 800; font-size: 1.2rem; line-height: 1.25; color: var(--negro); }
+  .cargo { margin-top: .3rem; font-family: var(--titulo); font-weight: 700; font-size: .9rem; color: var(--rojo); line-height: 1.4; }
+  .descripcion { margin-top: .75rem; font-size: .97rem; color: var(--suave); line-height: 1.55; }
+
+  /* Compra */
+  .compra { background: var(--rojo); color: var(--blanco); padding: 4rem 0; text-align: center; }
+  .compra h2 { font-family: var(--titulo); font-weight: 800; text-transform: uppercase; font-size: clamp(1.6rem, 4vw, 2.4rem); line-height: 1.15; }
+  .compra p { margin: .75rem 0 2rem; opacity: .92; }
+  .compra :focus-visible { outline-color: var(--blanco); }
+
+  /* Pie */
+  footer { background: var(--negro); color: var(--blanco); padding: 2.5rem 0 1.5rem; font-size: .95rem; }
+  footer .contenedor { display: grid; grid-template-columns: 1.2fr 1fr; gap: 2rem; }
+  footer h3 { font-family: var(--titulo); font-size: 1rem; margin-bottom: .5rem; }
+  footer p { opacity: .85; line-height: 1.6; }
+  footer a { text-underline-offset: 4px; }
+  footer .legal { grid-column: 1 / -1; border-top: 1px solid rgba(255,255,255,.18); padding-top: 1.25rem; font-size: .875rem; opacity: .75; }
+  footer :focus-visible { outline-color: var(--blanco); }
+
+  /* Información, ejes, ficha de ponente y cifras */
+  .info { background: var(--gris); border-bottom: 1px solid #e3e3e6; }
+  .info .contenedor { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; padding: 1.75rem 0; }
+  .info h3 { font-family: var(--titulo); font-size: .85rem; color: var(--rojo); text-transform: uppercase; letter-spacing: .06em; }
+  .info p { font-weight: 600; color: var(--negro); line-height: 1.5; margin-top: .2rem; }
+  .ejes { margin-top: 3rem; }
+  .ejes h3 { font-family: var(--titulo); font-weight: 800; font-size: 1.15rem; color: var(--negro); margin-bottom: 1rem; }
+  .ejes ul { list-style: none; display: grid; grid-template-columns: repeat(2, 1fr); gap: .6rem 2rem; }
+  .ejes li { padding-left: 1.4rem; position: relative; color: var(--suave); }
+  .ejes li::before { content: ""; position: absolute; left: 0; top: .6em; width: .6rem; height: .6rem; background: var(--rojo); border-radius: 2px; }
+  .datos { flex: 1; }
+  .enfoque { margin-top: .75rem; font-size: .97rem; color: var(--texto); line-height: 1.55; }
+  .perfil { margin-top: .9rem; padding-left: 1.1rem; font-size: .92rem; color: var(--suave); line-height: 1.5; }
+  .perfil li { margin-top: .4rem; }
+  .perfil li::marker { color: var(--rojo); }
+  .cifras { background: var(--negro); color: var(--blanco); padding: 3rem 0; }
+  .cifras .contenedor { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; text-align: center; }
+  .cifras strong { display: block; font-family: var(--titulo); font-weight: 800; font-size: clamp(1.8rem, 4vw, 2.6rem); line-height: 1.1; }
+  .cifras span { display: block; margin-top: .35rem; font-size: .95rem; opacity: .85; }
+  /* WhatsApp */
+  .acciones-compra { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 1rem; }
+  .boton.wa { display: inline-flex; align-items: center; gap: .55rem; background: transparent; color: var(--blanco); border: 2px solid var(--blanco); padding: calc(.85rem - 2px) 1.5rem; }
+  .boton.wa:hover { background: rgba(255,255,255,.14); }
+  .wa-flotante { position: fixed; right: 1rem; bottom: calc(1rem + env(safe-area-inset-bottom, 0px)); z-index: 50; display: inline-flex; align-items: center; gap: .55rem; padding: .8rem 1.15rem; background: #0e7a3d; color: var(--blanco); font-family: var(--titulo); font-weight: 700; font-size: .95rem; text-decoration: none; border-radius: 999px; box-shadow: 0 4px 16px rgba(0,0,0,.28); }
+  .wa-flotante:hover { background: #0b6232; }
+  .wa-flotante:focus-visible { outline-color: var(--negro); outline-offset: 3px; }
+  @media (max-width: 600px) { .wa-flotante span { display: none; } .wa-flotante { padding: .9rem; } }
+
+  @media (max-width: 860px) {
+    .info .contenedor { grid-template-columns: 1fr; gap: 1rem; }
+    .ejes ul { grid-template-columns: 1fr; }
+    .cifras .contenedor { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 860px) {
+    .explicacion .contenedor { grid-template-columns: 1fr; gap: 1.5rem; }
+    .rejilla { grid-template-columns: repeat(2, 1fr); }
+    footer .contenedor { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
+    .rejilla { grid-template-columns: 1fr; }
+    nav { gap: 1rem; flex-wrap: wrap; }
+    .superior .contenedor { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<div class="superior">
+  <div class="contenedor">
+    <span>Organiza: Cámara de Comercio de Cúcuta</span>
+    <span>Informes: <a href="tel:+573175164809">317 516 4809</a> · <a href="mailto:serviciosempresariales@cccucuta.org.co">serviciosempresariales@cccucuta.org.co</a></span>
+  </div>
+</div>
+
+<header>
+  <div class="contenedor barra">
+    <a class="marca" href="#">
+      <!-- Logo tomado del sitio de la Cámara. Si prefieres, descárgalo y cambia el src por tu archivo local. -->
+      <img src="/images/camara_logo_negro.png" alt="Cámara de Comercio de Cúcuta">
+      <span>Congreso Empresarial Sin Fronteras 2026</span>
+    </a>
+    <nav aria-label="Principal">
+      <a href="#por-que">Por qué ellos</a>
+      <a href="#ponentes">Ponentes</a>
+      <a class="boton" href="https://www.nuestroticket.com/event/congreso-empresarial-sin-fronteras-2026-3125.aspx" target="_blank" rel="noopener">Comprar entrada</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="contenedor">
+      <p class="pre">Congreso Empresarial Sin Fronteras 2026</p>
+      <h1>Conoce a quienes marcan el camino</h1>
+      <p class="texto">Nueve conferencistas nacionales e internacionales en una sola jornada. Jueves 19 de noviembre · Centro Cristiano, Los Pinos, Cúcuta.</p>
+      <div class="acciones">
+        <a class="boton claro" href="https://www.nuestroticket.com/event/congreso-empresarial-sin-fronteras-2026-3125.aspx" target="_blank" rel="noopener">Comprar entrada</a>
+        <a class="enlace" href="#ponentes">Ver ponentes</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="info" aria-label="Información del evento">
+    <div class="contenedor">
+      <div><h3>Fecha</h3><p>Jueves 19 de noviembre de 2026</p></div>
+      <div><h3>Lugar</h3><p>Centro Cristiano, Los Pinos (Cúcuta)</p></div>
+      <div><h3>Horario</h3><p>Jornada mañana: 8:00 AM a 12:30 PM<br>Jornada tarde: 2:30 PM a 6:30 PM</p></div>
+    </div>
+  </section>
+
+  <section class="explicacion" id="por-que">
+    <div class="contenedor">
+      <h2>Por qué ellos son referentes</h2>
+      <div>
+        <p>En el marco del aniversario de la Cámara de Comercio de Cúcuta, el congreso es un espacio estratégico de actualización, aprendizaje, relacionamiento y generación de oportunidades de negocio, para impulsar la innovación, la competitividad y el tejido empresarial de Norte de Santander.</p>
+        <p>Los ponentes reúnen audiencias de millones de seguidores, empresas con cientos de puntos de venta y plataformas que han formado a miles de personas. Vienen a compartir conocimientos vanguardistas, tendencias globales y herramientas prácticas.</p>
+      </div>
+    </div>
+    <div class="contenedor ejes">
+      <h3>Ejes temáticos</h3>
+      <ul><li>Finanzas prácticas para líderes de negocios</li><li>Negocios, tecnología y mentalidad</li><li>E-commerce y nuevas tendencias de comercio electrónico</li><li>Inteligencia artificial: la automatización que redefinirá tu empresa</li><li>Alianzas comerciales que multiplican el valor</li><li>El liderazgo que rompe las reglas del mercado</li><li>El impacto de Instagram y TikTok en la estrategia digital</li><li>Neurociencia y hábitos de alto rendimiento personal</li></ul>
+    </div>
+  </section>
+
+  <section class="ponentes" id="ponentes">
+    <div class="contenedor">
+      <h2>Nuestros 9 ponentes</h2>
+      <div class="rejilla">
+        <!-- FOTOS: están en la carpeta "fotos" (ponente1.png ... ponente9.png; la 6 son dos imágenes: ponente6a.png y ponente6b.png). Para cambiar una foto, reemplaza el archivo con el mismo nombre (PNG sin fondo, vertical 4:5). -->
+        <article class="ponente">
+          <div class="foto"><span class="ini">SS</span><img src="fotos/ponente8.png" alt="Foto de Santiago Sánchez Converzzo" onload="this.parentNode.querySelector('.ini').hidden=true" onerror="this.remove()"></div>
+          <div class="datos">
+            <h3>Santiago Sánchez Converzzo</h3>
+            <p class="cargo">Creación de contenido multimarca</p>
+            <p class="enfoque"><strong>Enfoque:</strong> Cierre enérgico centrado en el posicionamiento digital práctico de marcas y empresas utilizando video corto.</p>
+            <ul class="perfil"><li>Converzzo, empresa enfocada en la estrategia, el crecimiento y la conversión en Instagram.</li><li>Fundador de una academia digital que capacita a emprendedores y empresas en estrategia digital para Instagram y TikTok.</li><li>Más de 10.000 alumnos en 16 países, entre ellos Estados Unidos, México, Colombia y Panamá.</li></ul>
+          </div>
+        </article>
+        <article class="ponente">
+          <div class="foto"><span class="ini">NA</span><img src="fotos/ponente1.png" alt="Foto de Nicolás Abril" onload="this.parentNode.querySelector('.ini').hidden=true" onerror="this.remove()"></div>
+          <div class="datos">
+            <h3>Nicolas Abril</h3>
+            <p class="cargo">Finanzas</p>
+            <p class="enfoque"><strong>Enfoque:</strong> Desmitificar las inversiones y dar herramientas simples de ahorro corporativo y bienestar financiero.</p>
+            <ul class="perfil"><li>Conferencista financiero más influyente en LATAM, enfocado en democratizar la educación financiera de manera simple y práctica.</li><li>Más de 1,3 millones de seguidores en redes.</li><li>Posicionado como el creador de contenido financiero #1 en Colombia.</li></ul>
+          </div>
+        </article>
+        <article class="ponente">
+          <div class="foto"><span class="ini">SC</span><img src="fotos/ponente2.png" alt="Foto de Stephanie Carvajalino" onload="this.parentNode.querySelector('.ini').hidden=true" onerror="this.remove()"></div>
+          <div class="datos">
+            <h3>Stephanie Carvajalino, de Hermanas Carvajalino</h3>
+            <p class="cargo">Innovación empresarial y tecnología</p>
+            <p class="enfoque"><strong>Enfoque:</strong> Cómo escalar una plataforma a más de 500.000 personas y estructurar ecosistemas de innovación empresarial que atraigan a las nuevas generaciones.</p>
+            <ul class="perfil"><li>Líderes en innovación empresarial y tecnología en América Latina, autoras e influencers.</li><li>Fundadoras de Biz Nation, plataforma que ha formado a más de 500.000 personas en negocios, tecnología y emprendimiento.</li><li>Creadoras de Biz Fest, el evento más grande e importante para jóvenes sobre emprendimiento en Colombia.</li><li>Han estado en la lista de los 30 mejores de Forbes.</li><li>Comunidad de más de 1 millón de seguidores en Instagram.</li></ul>
+          </div>
+        </article>
+        <article class="ponente">
+          <div class="foto"><span class="ini">SC</span><img src="fotos/ponente3.png" alt="Foto de Santiago Cruz" onload="this.parentNode.querySelector('.ini').hidden=true" onerror="this.remove()"></div>
+          <div class="datos">
+            <h3>Santiago Cruz</h3>
+            <p class="cargo">Marketing digital</p>
+            <p class="enfoque"><strong>Enfoque:</strong> Estrategias tácticas de Paid Media y conversión inmediata para marcas que buscan un crecimiento agresivo y medible.</p>
+            <ul class="perfil"><li>Consultor en e-commerce y crecimiento para marcas y empresarios en LATAM.</li><li>Experto en marketing de respuesta directa y Paid Media (medios pagos).</li><li>Más de 50 millones de dólares vendidos a través de e-commerce.</li></ul>
+          </div>
+        </article>
+        <article class="ponente">
+          <div class="foto"><span class="ini">CM</span><img src="fotos/ponente4.png" alt="Foto de Chris Meniw" onload="this.parentNode.querySelector('.ini').hidden=true" onerror="this.remove()"></div>
+          <div class="datos">
+            <h3>Chris Meniw</h3>
+            <p class="cargo">Tecnología</p>
+            <p class="enfoque"><strong>Enfoque:</strong> Explicar de forma sencilla cómo los agentes autónomos de IA y el Blockchain cambiarán la operación diaria de los negocios tradicionales.</p>
+            <ul class="perfil"><li>Referente latinoamericano en IA agéntica e Industria 6.0, experto en ciberdelitos y blockchain.</li><li>Embajador para la Paz de la UPF, distinción honorífica otorgada por la Federación para la Paz Universal.</li><li>Creador de ZOE, la primera conductora de IA en TV.</li></ul>
+          </div>
+        </article>
+        <article class="ponente">
+          <div class="foto"><span class="ini">CC</span><img src="fotos/ponente5.png" alt="Foto de Carlos Andrés Cano Gamboa" onload="this.parentNode.querySelector('.ini').hidden=true" onerror="this.remove()"></div>
+          <div class="datos">
+            <h3>Carlos Andrés Cano Gamboa</h3>
+            <p class="cargo">Emprendimiento</p>
+            <p class="enfoque"><strong>Enfoque:</strong> 10 pasos clave para que tu negocio pase de 0 a un nivel de alto crecimiento.</p>
+            <ul class="perfil"><li>Gerente corporativo y fundador de la franquicia de bebidas funcionales Nativos: presencia en 25 departamentos y 55 ciudades, 131 puntos de venta y más de 180 empleos generados.</li><li>Experiencia en planes de negocio, planes estratégicos, evaluación y gerencia de proyectos, y creación de nuevas unidades estratégicas de negocio.</li></ul>
+          </div>
+        </article>
+        <article class="ponente">
+          <div class="foto doble"><span class="ini">YL</span><img src="fotos/ponente6a.png" alt="Foto de Yesid Vega" onload="this.parentNode.querySelector('.ini').hidden=true" onerror="this.remove()"><img src="fotos/ponente6b.png" alt="Foto de Lucho Orozco" onerror="this.remove()"></div>
+          <div class="datos">
+            <h3>Yesid Vega y Lucho Orozco</h3>
+            <p class="cargo">Conversatorio de marketing digital</p>
+            <p class="enfoque"><strong>Enfoque:</strong> Un formato tipo consultoría en vivo en el que compartirán los errores comunes y aciertos en el marketing digital actual.</p>
+            <ul class="perfil"><li>Empresarios nortesantandereanos, consultores de negocios y estrategas de marketing digital.</li><li>Reconocidos en el ecosistema del comercio electrónico y los negocios digitales en Latinoamérica.</li><li>Fundadores e impulsores de Praxis Estudio y Xellcrm.</li></ul>
+          </div>
+        </article>
+        <article class="ponente">
+          <div class="foto"><span class="ini">HO</span><img src="fotos/ponente7.png" alt="Foto de Héctor Orozco" onload="this.parentNode.querySelector('.ini').hidden=true" onerror="this.remove()"></div>
+          <div class="datos">
+            <h3>Héctor Orozco</h3>
+            <p class="cargo">Liderazgo y alianzas comerciales</p>
+            <p class="enfoque"><strong>Enfoque:</strong> Pasos clave para estructurar alianzas masivas y sostener el liderazgo comercial en mercados altamente competitivos.</p>
+            <ul class="perfil"><li>Ejecutivo con 30 años de experiencia en el sector QSR.</li><li>Ex director general para Arcos Dorados y el Caribe (empresa que opera McDonald’s, con más de 320 puntos de venta y más de 5.000 colaboradores).</li><li>Presidente de la Fundación Casa Ronald McDonald.</li></ul>
+          </div>
+        </article>
+        <article class="ponente">
+          <div class="foto"><span class="ini">PV</span><img src="fotos/ponente9.png" alt="Foto de Paulina Valencia" onload="this.parentNode.querySelector('.ini').hidden=true" onerror="this.remove()"></div>
+          <div class="datos">
+            <h3>Paulina Valencia</h3>
+            <p class="cargo">Desarrollo humano y liderazgo personal</p>
+            <p class="enfoque"><strong>Enfoque:</strong> Neurociencia y hábitos para el alto rendimiento personal y profesional, fortaleciendo la disciplina y superando las barreras que limitan el crecimiento.</p>
+            <ul class="perfil"><li>Autora de los libros “No eres tú, son tus hábitos” y “Hábitos con Cerebro”.</li><li>Creadora de Barco de Papel, metodología y comunidad de desarrollo personal que integra hábitos, neurociencia y autoconocimiento.</li><li>Conferencista que conecta la ciencia del comportamiento con herramientas prácticas para fortalecer la disciplina.</li></ul>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="cifras" aria-label="Alcance">
+    <div class="contenedor">
+      <div><strong>2.400</strong><span>asistentes</span></div>
+      <div><strong>+1.500</strong><span>empresas afiliadas</span></div>
+      <div><strong>+62.000</strong><span>seguidores en redes sociales</span></div>
+      <div><strong>+2.500</strong><span>seguidores en canal de difusión</span></div>
+    </div>
+  </section>
+
+  <section class="compra" id="entradas">
+    <div class="contenedor">
+      <h2>Asegura tu lugar en el congreso</h2>
+      <p>Jueves 19 de noviembre · Centro Cristiano, Los Pinos, Cúcuta.<br><strong>¡Somos frontera, somos más fuertes!</strong></p>
+      <div class="acciones-compra">
+        <a class="boton claro" href="https://www.nuestroticket.com/event/congreso-empresarial-sin-fronteras-2026-3125.aspx" target="_blank" rel="noopener">Comprar entrada</a>
+        <a class="boton wa" href="https://wa.me/message/6OSILCMMDNCVE1" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Habla con alguien por WhatsApp</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="contenedor">
+    <div>
+      <h3>Cámara de Comercio de Cúcuta</h3>
+      <p>Calle 10 No. 4-38, 1er piso, Torre B<br>Edificio Cámara de Comercio, Cúcuta<br>PBX (7) 588 0110 / (7) 588 0111, ext. 900 / 910</p>
+    </div>
+    <div>
+      <h3>Líneas de contacto del congreso</h3>
+      <p><a href="tel:+573175164809">317 516 4809</a> · <a href="tel:+573173649834">317 364 9834</a> · <a href="tel:+573124519334">312 451 9334</a><br><a href="mailto:serviciosempresariales@cccucuta.org.co">serviciosempresariales@cccucuta.org.co</a><br><a href="https://www.cccucuta.org.co/">www.cccucuta.org.co</a></p>
+    </div>
+    <div class="legal">© 2026 Congreso Empresarial Sin Fronteras. Organiza: Cámara de Comercio de Cúcuta.</div>
+  </div>
+</footer>
+
+<a class="wa-flotante" href="https://wa.me/message/6OSILCMMDNCVE1" target="_blank" rel="noopener" aria-label="Habla con alguien por WhatsApp"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg><span>Habla con alguien</span></a>
+
+</body>
+</html>
